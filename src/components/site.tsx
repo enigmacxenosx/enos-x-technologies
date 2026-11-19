@@ -47,13 +47,14 @@ const nav = [
   { to: "/", label: "Home" },
   { to: "/solutions", label: "Solutions" },
   { to: "/about", label: "About" },
+  { to: "/team", label: "Team" },
   { to: "/contact", label: "Contact" },
 ] as const;
 
 export function Logo() {
   return (
     <span className="inline-flex items-center gap-2" aria-label="ENOSX Technologies">
-      <img src="/enosx-mark.svg" alt="" className="h-8 w-8" />
+      <img src="/enosx-logo.png" alt="" className="h-8 w-8 object-contain" />
       <span className="font-display text-lg font-black tracking-tight">ENOS<span className="text-primary">X</span></span>
     </span>
   );
@@ -64,7 +65,7 @@ export function Header() {
     <header className="fixed inset-x-0 top-0 z-50 border-b border-border bg-background">
       <div className="mx-auto flex h-14 max-w-7xl items-center gap-5 px-4 md:gap-10 md:px-6">
         <Link to="/" aria-label="ENOSX Technologies home"><Logo /></Link>
-        <nav className="flex gap-4 text-sm text-muted-foreground md:gap-7">
+        <nav className="flex gap-1 text-xs text-muted-foreground sm:gap-3 md:gap-7 md:text-sm">
           {nav.map((n) => (
             <Link key={n.to} to={n.to} activeOptions={{ exact: true }} activeProps={{ className: "text-foreground" }} className="transition-colors hover:text-foreground">
               {n.label}

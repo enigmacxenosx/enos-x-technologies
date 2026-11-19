@@ -53,18 +53,18 @@ const nav = [
 export function Header() {
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-border bg-background">
-      <div className="mx-auto flex h-14 max-w-7xl items-center gap-10 px-6">
+      <div className="mx-auto flex h-14 max-w-7xl items-center gap-5 px-4 md:gap-10 md:px-6">
         <Link to="/" className="font-display text-lg font-black tracking-tight">
           ENOS<span className="text-primary">X</span>
         </Link>
-        <nav className="hidden gap-7 text-sm text-muted-foreground md:flex">
+        <nav className="flex gap-4 text-sm text-muted-foreground md:gap-7">
           {nav.map((n) => (
             <Link key={n.to} to={n.to} activeOptions={{ exact: true }} activeProps={{ className: "text-foreground" }} className="transition-colors hover:text-foreground">
               {n.label}
             </Link>
           ))}
         </nav>
-        <Link to="/contact" className="ml-auto rounded-sm bg-primary px-4 py-1.5 text-sm font-semibold text-primary-foreground transition hover:opacity-90">
+        <Link to="/contact" className="ml-auto hidden rounded-sm bg-primary sm:inline-block px-4 py-1.5 text-sm font-semibold text-primary-foreground transition hover:opacity-90">
           Start a project
         </Link>
       </div>

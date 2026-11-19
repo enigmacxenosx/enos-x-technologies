@@ -3,6 +3,14 @@ import { Chapter, Reveal } from "@/components/site";
 import engineers from "@/assets/engineers.jpg";
 import city from "@/assets/city.jpg";
 
+const team = [
+  ["EY", "Enosh Yeswa", "Founder & Chief Executive Officer", "Vision, strategy, leadership, major decisions, and key partnerships"],
+  ["TI", "Tracey Ivyone", "Growth, Marketing & Community Lead", "Content, social media, community, referrals, and acquisition"],
+  ["GW", "Grace Wangare", "Product Design & User Research Lead", "User experience, onboarding, interviews, and workflow design"],
+  ["VO", "Vince Odhiambo", "Executive Assistant", "Administration, scheduling, meeting follow-ups, and founder support"],
+  ["FA", "Faith Adhiambo", "Product & Operations Associate", "Project tracking, documentation, product feedback, coordination, and follow-through"],
+] as const;
+
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
@@ -37,6 +45,43 @@ function About() {
               <p className="text-xl">{t}</p>
             </Reveal>
           ))}
+        </div>
+      </section>
+      <section className="border-y border-border bg-card/40">
+        <div className="mx-auto max-w-7xl px-6 py-24">
+          <Reveal>
+            <div className="text-xs font-semibold uppercase tracking-[0.3em] text-primary">The people behind the work</div>
+            <h2 className="mt-4 text-4xl font-bold md:text-5xl">ENOSX Technologies Team</h2>
+          </Reveal>
+          <Reveal className="mt-10">
+            <div className="overflow-x-auto rounded-md border border-border bg-background">
+              <table className="w-full min-w-[760px] border-collapse text-left text-sm">
+                <caption className="sr-only">ENOSX Technologies team members and responsibilities</caption>
+                <thead className="bg-secondary text-xs uppercase tracking-[0.12em] text-muted-foreground">
+                  <tr>
+                    <th scope="col" className="w-20 border-b border-border px-4 py-4 font-semibold">Avatar</th>
+                    <th scope="col" className="w-44 border-b border-border px-4 py-4 font-semibold">Team member</th>
+                    <th scope="col" className="w-64 border-b border-border px-4 py-4 font-semibold">Role</th>
+                    <th scope="col" className="border-b border-border px-4 py-4 font-semibold">Main responsibility</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {team.map(([avatar, name, role, responsibility]) => (
+                    <tr key={name} className="border-b border-border last:border-b-0">
+                      <td className="px-4 py-5 align-top">
+                        <span className="inline-flex h-9 w-9 items-center justify-center rounded-sm border border-primary/40 bg-primary/10 font-display text-xs font-black text-primary" aria-hidden="true">
+                          {avatar}
+                        </span>
+                      </td>
+                      <th scope="row" className="px-4 py-5 align-top font-semibold text-foreground">{name}</th>
+                      <td className="px-4 py-5 align-top text-muted-foreground">{role}</td>
+                      <td className="px-4 py-5 align-top leading-relaxed text-muted-foreground">{responsibility}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </Reveal>
         </div>
       </section>
       <Chapter img={engineers} eyebrow="Our values" title="Build boldly. Ship honestly. Stay curious." body="We move fast with care, tell clients the truth, and never stop learning." />

@@ -7,9 +7,9 @@ import engineers from "@/assets/engineers.jpg";
 export const Route = createFileRoute("/solutions")({
   head: () => ({
     meta: [
-      { title: "Solutions — Enos X Technologies" },
-      { name: "description", content: "AI, cloud infrastructure and product engineering from Enos X Technologies." },
-      { property: "og:title", content: "Solutions — Enos X Technologies" },
+      { title: "Solutions — ENOSX Technologies" },
+      { name: "description", content: "AI, cloud infrastructure and product engineering from ENOSX Technologies." },
+      { property: "og:title", content: "Solutions — ENOSX Technologies" },
       { property: "og:description", content: "AI, cloud and software solutions built to scale." },
     ],
   }),

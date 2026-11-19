@@ -8,9 +8,9 @@ import chip from "@/assets/chip.jpg";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Enos X Technologies — Building what comes next" },
-      { name: "description", content: "Enos X Technologies builds AI, cloud and software that move businesses forward." },
-      { property: "og:title", content: "Enos X Technologies — Building what comes next" },
+      { title: "ENOSX Technologies — Building what comes next" },
+      { name: "description", content: "ENOSX Technologies builds AI, cloud and software that move businesses forward." },
+      { property: "og:title", content: "ENOSX Technologies — Building what comes next" },
       { property: "og:description", content: "AI, cloud and software engineered in Africa, for the world." },
     ],
   }),
@@ -45,7 +45,7 @@ function Index() {
         <div className="relative mx-auto max-w-5xl px-6 pb-20 pt-32 text-center">
           <Reveal>
             <h1 className="text-6xl font-black leading-[0.95] md:text-8xl">Building what<br />comes next.</h1>
-            <p className="mx-auto mt-6 max-w-xl text-lg text-muted-foreground">Enos X Technologies engineers AI, cloud and software for companies that refuse to stand still.</p>
+            <p className="mx-auto mt-6 max-w-xl text-lg text-muted-foreground">ENOSX Technologies engineers AI, cloud and software for companies that refuse to stand still.</p>
           </Reveal>
           <Reveal className="mx-auto mt-14 max-w-3xl">
             <div className="flex items-stretch overflow-hidden rounded-md border border-border bg-card text-left">

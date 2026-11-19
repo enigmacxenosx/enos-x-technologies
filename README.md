@@ -1,6 +1,6 @@
-# Enos X Technologies
+# ENOSX Technologies
 
-A cinematic promotional landing page for Enos X Technologies, showcasing our work in AI, cloud infrastructure, software engineering, and digital strategy.
+A cinematic promotional landing page for ENOSX Technologies, showcasing our work in AI, cloud infrastructure, software engineering, and digital strategy.
 
 ## Development
 

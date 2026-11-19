@@ -5,9 +5,9 @@ import { Reveal } from "@/components/site";
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact — Enos X Technologies" },
-      { name: "description", content: "Start a project with Enos X Technologies." },
-      { property: "og:title", content: "Contact Enos X Technologies" },
+      { title: "Contact — ENOSX Technologies" },
+      { name: "description", content: "Start a project with ENOSX Technologies." },
+      { property: "og:title", content: "Contact ENOSX Technologies" },
       { property: "og:description", content: "Tell us what you're building." },
     ],
   }),

@@ -50,13 +50,20 @@ const nav = [
   { to: "/contact", label: "Contact" },
 ] as const;
 
+export function Logo() {
+  return (
+    <span className="inline-flex items-center gap-2" aria-label="ENOSX Technologies">
+      <img src="/enosx-mark.svg" alt="" className="h-8 w-8" />
+      <span className="font-display text-lg font-black tracking-tight">ENOS<span className="text-primary">X</span></span>
+    </span>
+  );
+}
+
 export function Header() {
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-border bg-background">
       <div className="mx-auto flex h-14 max-w-7xl items-center gap-5 px-4 md:gap-10 md:px-6">
-        <Link to="/" className="font-display text-lg font-black tracking-tight">
-          ENOS<span className="text-primary">X</span>
-        </Link>
+        <Link to="/" aria-label="ENOSX Technologies home"><Logo /></Link>
         <nav className="flex gap-4 text-sm text-muted-foreground md:gap-7">
           {nav.map((n) => (
             <Link key={n.to} to={n.to} activeOptions={{ exact: true }} activeProps={{ className: "text-foreground" }} className="transition-colors hover:text-foreground">
@@ -77,7 +84,7 @@ export function Footer() {
     <footer className="border-t border-border bg-background">
       <div className="mx-auto grid max-w-7xl gap-10 px-6 py-16 md:grid-cols-4">
         <div>
-          <div className="font-display text-2xl font-black">ENOS<span className="text-primary">X</span></div>
+          <Logo />
           <p className="mt-3 text-sm text-muted-foreground">Technology built in Africa, for the world.</p>
         </div>
         {[["Company", ["About", "Careers", "Newsroom"]], ["Solutions", ["AI & Data", "Cloud", "Software"]], ["Connect", ["Contact", "LinkedIn", "X / Twitter"]]].map(([t, items]) => (
@@ -87,7 +94,7 @@ export function Footer() {
           </div>
         ))}
       </div>
-      <div className="border-t border-border py-6 text-center text-xs text-muted-foreground">© {new Date().getFullYear()} Enos X Technologies. All rights reserved.</div>
+      <div className="border-t border-border py-6 text-center text-xs text-muted-foreground">© {new Date().getFullYear()} ENOSX Technologies. All rights reserved.</div>
     </footer>
   );
 }

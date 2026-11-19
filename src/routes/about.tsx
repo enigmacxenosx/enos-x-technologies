@@ -14,9 +14,9 @@ const team = [
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About — Enos X Technologies" },
-      { name: "description", content: "Our mission, story and values at Enos X Technologies." },
-      { property: "og:title", content: "About Enos X Technologies" },
+      { title: "About — ENOSX Technologies" },
+      { name: "description", content: "Our mission, story and values at ENOSX Technologies." },
+      { property: "og:title", content: "About ENOSX Technologies" },
       { property: "og:description", content: "Our mission is to build technology that gives everyone more power to create." },
     ],
   }),

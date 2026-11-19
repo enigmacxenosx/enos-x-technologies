@@ -28,8 +28,9 @@ export const Route = createFileRoute("/team")({
 function Team() {
   return (
     <>
-      <section className="border-b border-border bg-card/45 pt-14">
-        <div className="mx-auto max-w-7xl px-6 py-16 text-center md:py-20">
+      <section className="cinematic-page-hero relative overflow-hidden border-b border-border pt-14">
+        <div className="hero-glow absolute inset-0" />
+        <div className="relative mx-auto max-w-7xl px-6 py-24 text-center md:py-32">
           <Reveal>
             <p className="text-xs font-semibold uppercase tracking-[0.3em] text-primary">
               ENOSX Technologies

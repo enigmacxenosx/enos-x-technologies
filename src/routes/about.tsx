@@ -22,19 +22,20 @@ export const Route = createFileRoute("/about")({
 function About() {
   return (
     <>
-      <section className="relative flex h-screen items-end overflow-hidden">
+      <section className="cinematic-page-hero relative flex min-h-[88svh] items-end overflow-hidden pt-14">
         <img
           src={city}
           alt="Nairobi skyline"
           className="slowzoom absolute inset-0 h-full w-full object-cover"
         />
+        <div className="hero-glow absolute inset-0" />
         <div className="scrim-bottom absolute inset-0" />
         <div className="relative mx-auto w-full max-w-7xl px-6 pb-24">
           <Reveal>
             <div className="text-xs font-semibold uppercase tracking-[0.3em] text-primary">
-              Our mission
+              ENOSX / Our mission
             </div>
-            <h1 className="mt-4 max-w-4xl text-6xl font-black leading-[0.95] md:text-8xl">
+            <h1 className="mt-4 max-w-4xl text-6xl font-black leading-[0.88] text-white md:text-8xl">
               Give every business the power of great technology.
             </h1>
           </Reveal>
@@ -49,7 +50,7 @@ function About() {
             ["2019", "Founded in Nairobi by a small team of engineers."],
             ["2021", "Launched our first cloud platform for East African fintechs."],
             ["2023", "Expanded into AI and data, serving 10+ countries."],
-            ["2026", "Introduced Enos Core — private AI for every business."],
+            ["2026", "Introduced ENOSX Core — private AI for every business."],
           ].map(([y, t]) => (
             <Reveal
               key={y}
@@ -70,7 +71,7 @@ function About() {
             <h2 className="mt-4 text-4xl font-bold md:text-5xl">ENOSX Technologies Team</h2>
           </Reveal>
           <Reveal className="mt-10">
-            <div className="overflow-x-auto rounded-md border border-border bg-background">
+            <div className="cinematic-table overflow-x-auto rounded-2xl border border-border bg-background/70 backdrop-blur">
               <table className="w-full min-w-[760px] border-collapse text-left text-sm">
                 <caption className="sr-only">
                   ENOSX Technologies team members and responsibilities

@@ -187,6 +187,18 @@
   background: linear-gradient(to top, var(--background), transparent);
 }
 .cinematic-card { background-image: radial-gradient(circle at 85% 12%, oklch(0.52 0.22 300 / 12%), transparent 34%); }
+.cinematic-page-hero { isolation: isolate; background: #08091b; }
+.cinematic-page-hero > img, .cinematic-page-hero > .hero-glow, .cinematic-page-hero > .scrim-bottom { z-index: -1; }
+.cinematic-page-hero h1, .cinematic-page-hero h2 { text-wrap: balance; }
+.cinematic-table { box-shadow: 0 20px 80px oklch(0.06 0.04 270 / 22%); }
+.cinematic-contact::before {
+  position: absolute;
+  inset: 4rem -20% auto;
+  height: 28rem;
+  content: "";
+  pointer-events: none;
+  background: radial-gradient(circle, oklch(0.54 0.24 290 / 24%), transparent 66%);
+}
 @media (prefers-reduced-motion: reduce) {
   .slowzoom, .reveal { animation: none; transition: none; }
   .reveal { opacity: 1; transform: none; }

@@ -157,14 +157,14 @@ function Index() {
       <section className="relative min-h-[88svh] overflow-hidden">
         <img
           src={chip}
-          alt="Enos Core private AI hardware"
+          alt="ENOSX Core private AI hardware"
           className="slowzoom absolute inset-0 h-full w-full object-cover"
         />
         <div className="scrim-left absolute inset-0" />
         <div className="relative mx-auto flex min-h-[88svh] max-w-7xl items-end px-6 pb-20">
           <Reveal className="max-w-xl">
             <div className="text-xs font-semibold uppercase tracking-[0.3em] text-primary">
-              Introducing Enos Core
+              Introducing ENOSX Core
             </div>
             <h2 className="mt-5 text-5xl font-black leading-[0.92] text-white md:text-8xl">
               Private AI.
@@ -179,7 +179,7 @@ function Index() {
               to="/solutions"
               className="mt-8 inline-block rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition hover:brightness-110"
             >
-              Discover Enos Core
+              Discover ENOSX Core
             </Link>
           </Reveal>
         </div>

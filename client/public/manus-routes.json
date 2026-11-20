@@ -1,0 +1,12 @@
+{
+  "routes": [
+    { "path": "/", "title": "ENOSX Technologies — Building the future from Kenya" },
+    { "path": "/about", "title": "About — Nairobi, since 2024" },
+    { "path": "/products", "title": "Portfolio — six products" },
+    { "path": "/core", "title": "Private AI — ENOSX AI and ENOSX Core" },
+    { "path": "/team", "title": "Team — five named roles" },
+    { "path": "/accounts", "title": "Accounts — every documented channel" },
+    { "path": "/contact", "title": "Contact desk" },
+    { "path": "/admin", "title": "Owner desk" }
+  ]
+}

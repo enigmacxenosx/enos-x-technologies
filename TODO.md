@@ -5,12 +5,26 @@ Facts come from the user's own repositories (`enosxai`, `Enosx-X-enosxai`, `Exbo
 
 Status: all five outcome groups delivered. Evidence is in [`VERIFICATION.md`](VERIFICATION.md).
 
+**Follow-up delivered on request:** "use people to create the video" — every reel now carries
+people (studio team, pair programmers, rack-aisle technician, Nairobi pavement, shop counter,
+five-person group shot), with the hero rebuilt as a six-shot documentary montage. See §1.
+
 ## 1. Cinematic video layers (real encoded video, not pictures) — **complete**
 
 Chromium proof on the live Preview origin: hero `readyState 4`, `currentTime 8.41s`, 1920×1080
 decoding; off-screen reels `paused:true, t:0, readyState:0, preload:none`; scrolling the Core band
 into frame set `data-state="live"` and started `chapter-core.mp4` while pausing the hero.
 
+- **People, not props (follow-up request, complete).** Seven documentary frames of people at work
+  replaced the logo plate and the empty-room stills. Live console read after the swap:
+  `hero-1080.mp4` `paused:false, t 10.77s, readyState 4, 1920×1080, duration 12.5s`, while
+  `chapter-core`, `chapter-nairobi` and `signal-loop` stayed `paused:true, t:0, readyState:0`
+  with `preload="none"`; scrolling made `chapter-core.mp4` then `chapter-nairobi.mp4` go
+  `data-state="live"` as the hero dropped back to `idle`. Loop seam measured 1.38/255 (hero) and
+  1.31/255 (chapters) by diffing the first and last decoded frames.
+- A new text-to-video clip could not be requested for this pass: the free plan allows one
+  `generate_video` per request/day and that allowance had already been spent on the original hero.
+  The hero is a genuine encoded montage (ffmpeg), not a still pretending to move.
 - Every "cinematic" background is an actual `<video>` element with encoded files served from
   `client/public/media/` — no image-only stand-ins for the requested video look.
 - Hero reel = AI-generated ENOSX brand clip (Seedance 2.0 Mini, 720p, exactly 5 s, single clip

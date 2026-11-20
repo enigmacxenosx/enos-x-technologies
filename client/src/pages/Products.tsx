@@ -7,11 +7,12 @@ import Meta from "@/components/Meta";
 import { brand, products } from "@/data/site";
 
 const REEL_LABELS: Record<string, string> = {
-  datacenter: "Machine room corridor receding into light, slow push-in",
-  core: "A compact compute device with one lit indicator, slow push-in",
-  studio: "Workstations in a daylit studio, people at screens, slow push-in",
-  commerce: "Electronics counter with devices on stands, slow lateral move",
-  nairobi: "Aerial light pass over the Nairobi skyline at golden hour",
+  datacenter: "A technician walking the rack aisle with a laptop, slow push-in",
+  core: "An engineer's hands testing the device, one lit indicator",
+  studio: "Two developers at one screen, hands on the keyboard",
+  commerce: "Customer and shopkeeper at a Kenyan electronics counter",
+  nairobi: "Pedestrians crossing a Nairobi pavement at golden hour",
+  crew: "The five-person team around one table, mid-conversation",
 };
 
 export default function Products() {
@@ -84,7 +85,7 @@ export default function Products() {
                 />
                 <div className="slate-row mt-4">
                   <span className="slate">
-                    Reel {p.index} · {p.reel} · 1920×1080 / 3840×2160
+                    Reel {p.index} · {p.reel} · 1920×1080 people footage
                   </span>
                   <span className="slate-bar" aria-hidden="true" />
                   <span className="slate slate-teal">loops seamlessly</span>

@@ -21,7 +21,7 @@ export default function Team() {
         path="/team"
       />
 
-      <Reel id="studio" label="Daylit studio: people at workstations, slow push-in" scrim="ink">
+      <Reel id="crew" label="The five-person ENOSX team around one table, slow push-in" scrim="ink">
         <div className="wrap on-media" style={{ paddingTop: "clamp(6rem, 13vw, 11rem)", paddingBottom: "clamp(4rem, 9vw, 8rem)" }}>
           <Slate no="Reel 04" items={["People", brand.city, "TEAM.md"]} tone="media" className="mb-8" />
           <MaskLines as="h1" lines={[<span key="a">The</span>, <span key="b">team.</span>]} />

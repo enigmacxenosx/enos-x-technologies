@@ -3,7 +3,8 @@ import { useEffect, useRef, useState } from "react";
 /**
  * Reel — a real encoded video layer, never a still pretending to move.
  *
- * Each reel ships two H.264 files (a 4K-grade master and a 1080p stream) plus a
+ * Every reel is footage of people: the studio, the street, the counter, the rack room.
+ * Each ships two H.264 files (a 4K-grade master and a 1080p stream) plus a
  * JPEG poster. The browser picks by viewport width and device pixel ratio, so a
  * 2160p display gets the 3840x2160 file. Playback is driven by IntersectionObserver
  * so off-screen reels cost nothing, and reduced-motion / Save-Data visitors get the
@@ -17,6 +18,7 @@ export type ReelId =
   | "datacenter"
   | "core"
   | "commerce"
+  | "crew"
   | "signal";
 
 type Src = { hd: string; ud: string; poster: string; ratio: string };
@@ -56,6 +58,12 @@ const REGISTRY: Record<ReelId, Src> = {
     hd: "/media/chapter-commerce.mp4",
     ud: "/media/chapter-commerce.mp4",
     poster: "/media/chapter-commerce-poster.jpg",
+    ratio: "16:9",
+  },
+  crew: {
+    hd: "/media/chapter-crew.mp4",
+    ud: "/media/chapter-crew.mp4",
+    poster: "/media/chapter-crew-poster.jpg",
     ratio: "16:9",
   },
   signal: {

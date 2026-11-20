@@ -38,7 +38,7 @@ export default function Home() {
       />
 
       {/* --------------------------------------------------------- 01 hero */}
-      <Reel id="hero" label="ENOSX mark resolving out of a light pass, seamless loop" eager scrim="bottom" frame={false}>
+      <Reel id="hero" label="Documentary montage: the ENOSX team at work in Nairobi, seamless loop" eager scrim="bottom" frame={false}>
         <div
           className="wrap w-full flex flex-col justify-between gap-14"
           style={{
@@ -206,7 +206,7 @@ export default function Home() {
             <Reveal delay={120}>
               <Reel
                 id="core"
-                label="ENOSX Core: a compact machine with one lit indicator, slow push-in"
+                label="ENOSX Core in an engineer's hands, one lit indicator, slow push-in"
                 scrim="none"
                 className="reel-box"
               />
@@ -276,7 +276,7 @@ export default function Home() {
       </Band>
 
       {/* ------------------------------------------------------- 06 impact */}
-      <Reel id="nairobi" anchor="impact" label="Aerial light pass over the Nairobi skyline at golden hour" scrim="ink">
+      <Reel id="nairobi" anchor="impact" label="Nairobi street at golden hour: pedestrians, traffic, one call in progress" scrim="ink">
         <div className="wrap" style={{ paddingTop: "clamp(5rem, 11vw, 10rem)", paddingBottom: "clamp(5rem, 11vw, 10rem)" }}>
           <SectionHead
             no="06"

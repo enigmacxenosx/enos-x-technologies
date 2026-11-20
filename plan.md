@@ -12,13 +12,25 @@ shipped code:
 1. **Media format.** H.264 MP4 only (`client/public/media/*.mp4` + JPEG posters) — no WebM
    variants, since every target browser decodes the baseline profile here.
 2. **Resolutions.** The 3840×2160 stream is reserved for the hero (`hero-2160.mp4`, served by a
-   `min-width: 1600px` source query with `hero-1080.mp4` as the companion). The five chapter
+   `min-width: 1600px` source query with `hero-1080.mp4` as the companion). The six chapter
    reels and the accounts signal field ship at 1920×1080, all 24 fps seamless loops.
 3. **Signal field.** Rendered offline with ffmpeg rather than drawn on a live `<canvas>`, so the
    result is a real video layer that pauses with the scroll like every other reel.
 4. **Logo form.** The mark is delivered as a cut PNG size set (48–1024, plus `.ico`,
    `favicon.png` and `apple-touch-icon`) and used full-bleed through the CSS `.overprint__mark`
    treatment, not as a standalone `enosx-mark.svg` file.
+5. **People in the frame (requested follow-up).** Every reel was re-cut around documentary imagery
+   of *people at work* — the studio team at a whiteboard table, two developers on one screen, a
+   technician in the rack aisle, a Nairobi pavement at golden hour, an electronics counter, and the
+   five-person group shot that opens `/team`. The hero is now a six-shot montage joined with 0.5 s
+   cross-dissolves that returns to its opening shot, so it still loops without a visible seam
+   (measured 1.38/255). A new `crew` reel was added for the team page. The only reel left as pure
+   graphics is the accounts signal field, kept that way on purpose so the ink headline stays
+   readable over it.
+6. **How the hero was made, honestly.** A fresh text-to-video generation was not available for this
+   pass: the free plan allows one `generate_video` call per request/day and that allowance had
+   already gone to the original logo clip. The hero is therefore assembled with ffmpeg from
+   photographic frames — real encoded motion video at 3840×2160 and 1920×1080, not a still image.
 
 §2 and §4 below have been updated to the shipped paths and router names; §3 stays as the approved
 design intent (the deviations above are the only differences).

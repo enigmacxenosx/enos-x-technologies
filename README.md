@@ -59,31 +59,40 @@ is claimed.
 
 ## Media pipeline
 
-`client/public/media/` holds **7 encoded reels** (8 MP4 files, the hero ships two resolutions)
-plus 7 poster JPEGs — real video, not stills. Each reel is a `<video>` element
-(`muted playsinline autoplay loop`) driven by an IntersectionObserver, so off-screen reels are
-paused with `preload="none"` and cost no decode. All are H.264 at 24 fps with identical first and
-last frames for seamless loops, `+faststart` for progressive playback.
+Every reel is **footage of people** — the studio, the pair at one screen, the rack aisle, the
+Nairobi pavement, the shop counter — encoded as real video, never a still pretending to move.
 
-| File | Resolution | Role |
-| --- | --- | --- |
-| `hero-2160.mp4` | 3840×2160, 5.8 MB | 4K master, served by `<source media="(min-width: 1600px)">` |
-| `hero-1080.mp4` | 1920×1080, 4.7 MB | fallback for smaller screens and `devicePixelRatio` |
-| `chapter-{nairobi,studio,datacenter,core,commerce}.mp4` | 1920×1080, 0.5–1.7 MB | full-HD chapter reels |
-| `signal-loop.mp4` | 1920×1080, 0.6 MB | accounts-band signal field |
-| `*-poster.jpg` | — | posters; also the static treatment for `prefers-reduced-motion`, `save-data` or blocked autoplay |
+| File | Resolution | Length | Role |
+| --- | --- | --- | --- |
+| `hero-2160.mp4` | 3840×2160, 15.6 MB | 12.5 s | 4K master, served by `<source media="(min-width: 1600px)">` |
+| `hero-1080.mp4` | 1920×1080, 5.7 MB | 12.5 s | fallback for smaller screens and `devicePixelRatio` |
+| `chapter-crew.mp4` | 1920×1080, 0.84 MB | 10 s | the five-person team around one table (`/team`) |
+| `chapter-studio.mp4` | 1920×1080, 0.76 MB | 10 s | two developers at one screen (`/core`, browser row) |
+| `chapter-datacenter.mp4` | 1920×1080, 0.77 MB | 10 s | technician working a rack with a laptop (`/products`, 404) |
+| `chapter-nairobi.mp4` | 1920×1080, 0.74 MB | 10 s | pedestrians and a matatu at golden hour (`/about`, impact) |
+| `chapter-core.mp4` | 1920×1080, 0.60 MB | 10 s | an engineer's hands on the device (Core band) |
+| `chapter-commerce.mp4` | 1920×1080, 0.74 MB | 10 s | customer and shopkeeper at the counter (`/contact`) |
+| `signal-loop.mp4` | 1920×1080, 0.64 MB | 10 s | accounts-band signal field (the one non-photographic reel) |
+| `*-poster.jpg` | — | — | posters; also the static treatment for `prefers-reduced-motion`, `save-data` or blocked autoplay |
 
-The hero was generated as a 720p, 5-second seamless clip, then upscaled, de-noised and grained
-with ffmpeg to the 4K master. The chapter reels were rendered from 2816×1584 photographic frames
-and the signal field from procedurally drawn frames by the pipeline in `/home/ubuntu/media/reels.py`
-(slow push-in, drifting light pass, vignette breathing, film grain). The largest file is 5.8 MB,
-far inside the 30 MiB per-asset limit.
+The hero is a six-shot documentary montage: each shot is a sinusoidal push-in that returns to its
+own opening scale, the shots are joined by 0.5 s cross-dissolves, and the sequence dissolves back
+to the first frame — so frame 0 and frame 299 measure a mean difference of 1.38/255 and the loop
+has no visible seam (chapter reels measure 1.31/255). Grades, animated grain and vignette are
+applied before the 4K upscale. Pipeline: `/home/ubuntu/media/reels2.py`.
+
+**Who appears.** The reel footage is illustrative documentary imagery generated for this site: it
+shows *people at work in a Kenyan software studio*, not the named individuals on `/team`, and it is
+never captioned as if it were. The founder and team portraits remain the real photographs taken
+from the company repository (`client/public/avatars/`). Nothing on the site claims a client, a
+headcount or a metric that is not in the repositories.
 
 ## Brand assets
 
 `client/public/brand/` carries a size set of the supplied logo (`enosx-logo-concept-c.png`) cut
 to PNG at 48/96/180/192/256/384/512/1024, an inverted 768 mark for the ink overprint band,
-`apple-touch-icon.png` and `og-cover.jpg`. The unmodified supply is kept at
+`apple-touch-icon.png` and `og-cover.jpg` (1600×840, the studio frame with an ink foot band and the
+wordmark). The unmodified supply is kept at
 `client/public/enosx-logo.png`, and `favicon.ico` + `favicon.png` are declared in the document
 head along with `theme-color: #012363`. The hexagon mark appears at full bleed through CSS
 (`.overprint__mark`) rather than as a separate SVG file, so it stays crisp at any scale.

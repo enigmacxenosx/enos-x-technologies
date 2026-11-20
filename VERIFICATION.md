@@ -6,6 +6,37 @@ All page routes return `200 text/html`. `/manus-routes.json` returns `200 applic
 `/robots.txt`, `/sitemap.xml`, `/media/*.mp4` (`video/mp4`), `/avatars/*.jpg`, `/brand/*` and both
 favicons return 200.
 
+## People footage pass (the current reel set)
+
+Every reel now carries people rather than a logo plate or an empty room, and the change was
+verified in the browser rather than assumed:
+
+- Console read on `/` at load: `hero-1080.mp4` `paused:false`, `t 10.77s`, `readyState 4`,
+  `1920×1080`, `duration 12.50s`; `chapter-core.mp4`, `chapter-nairobi.mp4` and
+  `signal-loop.mp4` all `paused:true, t:0, readyState:0` with `preload="none"`.
+- Scrolling to the Core band: `chapter-core.mp4` `paused:false, t 1.49s, data-state="live"` while
+  the hero went `paused:true, data-state="idle"`. Scrolling to Impact: `chapter-nairobi.mp4` went
+  `live` (`t 1.53s`) and Core returned to `idle`. Only the reel in frame ever decodes.
+- Screenshot pass at 1440×900 on `/`, `/team`, `/products`, `/core`, `/about`: the hero shows the
+  studio with a colleague at the whiteboard, `/team` shows five people around one table
+  (`chapter-crew.mp4`), `/products` shows a technician working a rack, `/core` shows two developers
+  at one screen, `/about` shows pedestrians and a matatu at golden hour. Reversed headlines stay
+  legible over every frame.
+- Loop seam measured, not eyeballed: hero frame 0 vs frame 299 = mean difference **1.38/255**
+  (max 39); `chapter-crew.mp4` frame 0 vs 239 = **1.31/255** (max 44). The montage's first draft
+  ended on a different shot than it started and measured 57.24/255, so the sequence now dissolves
+  back to the opening frame before encoding.
+- Probes: `hero-2160.mp4` 3840×2160 / 252→300 frames, all chapters 1920×1080 / 240 frames,
+  24 fps, H.264. Media folder totals 28 MB with the largest single file 15.6 MB, inside the
+  30 MiB per-asset limit.
+- `og-cover.jpg` regenerated at 1600×840 from the studio frame with an ink foot band.
+
+**Constraint recorded honestly:** a new AI *generated* clip of people could not be requested for
+this pass — the free plan allows one `generate_video` call per request/day (the quota had already
+been spent on the original hero, and it resets 2026-11-21 03:00 UTC+03:00). The hero is therefore a
+real six-shot encoded montage assembled from photographic frames with ffmpeg, which is genuine
+moving video; it is not a text-to-video clip.
+
 ## Real video playback (Chromium, `browser_console_exec` on the Preview origin)
 
 Home at 1280 viewport, dpr 1, `prefers-reduced-motion: reduce` = false:

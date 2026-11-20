@@ -93,7 +93,7 @@ export default function Contact() {
         path="/contact"
       />
 
-      <Reel id="commerce" label="Counter of devices in a Kenyan electronics shop, slow lateral move" scrim="ink">
+      <Reel id="commerce" label="A customer and the shopkeeper at a Kenyan electronics counter" scrim="ink">
         <div
           className="wrap on-media"
           style={{ paddingTop: "clamp(6rem, 12vw, 10rem)", paddingBottom: "clamp(3.5rem, 7vw, 6rem)" }}

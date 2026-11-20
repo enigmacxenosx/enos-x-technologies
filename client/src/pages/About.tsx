@@ -15,7 +15,7 @@ export default function About() {
         path="/about"
       />
 
-      <Reel id="nairobi" label="Aerial pass over Nairobi at golden hour, slow push-in" scrim="ink">
+      <Reel id="nairobi" label="Nairobi pavement at golden hour, people moving through the light" scrim="ink">
         <div className="wrap on-media" style={{ paddingTop: "clamp(6rem, 13vw, 11rem)", paddingBottom: "clamp(4rem, 9vw, 8rem)" }}>
           <Slate no="Reel 06" items={["About", brand.city, `Founded ${brand.foundedYear}`]} tone="media" className="mb-8" />
           <MaskLines as="h1" lines={[<span key="a">Nairobi,</span>, <span key="b">since 2024.</span>]} />

@@ -164,7 +164,7 @@ export const products: Product[] = [
     ],
     status: "Live",
     link: { label: "Read it", href: "https://github.com/enigmacxenosx/enosh-blog" },
-    reel: "studio",
+    reel: "crew",
   },
 ];
 

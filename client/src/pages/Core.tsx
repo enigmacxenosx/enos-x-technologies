@@ -43,7 +43,7 @@ export default function Core() {
         path="/core"
       />
 
-      <Reel id="studio" label="Daylit studio, three people working at screens, slow push-in" scrim="ink">
+      <Reel id="studio" label="Daylit studio, two developers working at one screen, slow push-in" scrim="ink">
         <div className="wrap on-media" style={{ paddingTop: "clamp(6rem, 13vw, 11rem)", paddingBottom: "clamp(4rem, 9vw, 8rem)" }}>
           <Slate no="Reel 03" items={["ENOSX AI · ENOSX Core", "Multimodal", "Private by posture"]} tone="media" className="mb-8" />
           <MaskLines as="h1" lines={[<span key="a">Speed</span>, <span key="b">is UX.</span>]} />

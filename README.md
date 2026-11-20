@@ -59,25 +59,34 @@ is claimed.
 
 ## Media pipeline
 
-`client/public/media/` holds encoded video files, not stills. Each reel is a real `<video>`
-element (`muted playsinline autoplay loop`) driven by an IntersectionObserver so off-screen reels
-are paused with `preload="none"` and cost no decode.
+`client/public/media/` holds **7 encoded reels** (8 MP4 files, the hero ships two resolutions)
+plus 7 poster JPEGs — real video, not stills. Each reel is a `<video>` element
+(`muted playsinline autoplay loop`) driven by an IntersectionObserver, so off-screen reels are
+paused with `preload="none"` and cost no decode. All are H.264 at 24 fps with identical first and
+last frames for seamless loops, `+faststart` for progressive playback.
 
-- `hero-2160.mp4` — 3840×2160 master (served to viewports ≥1600px through a `media` source query)
-- `hero-1080.mp4` — 1920×1080 fallback for smaller screens
-- `chapter-{nairobi,studio,datacenter,core,commerce}.mp4`, `signal-loop.mp4` — 2560×1440 chapter reels
-- `*-poster.jpg` — posters, also used as the static treatment for `prefers-reduced-motion`,
-  `save-data`, or when autoplay is blocked
+| File | Resolution | Role |
+| --- | --- | --- |
+| `hero-2160.mp4` | 3840×2160, 5.8 MB | 4K master, served by `<source media="(min-width: 1600px)">` |
+| `hero-1080.mp4` | 1920×1080, 4.7 MB | fallback for smaller screens and `devicePixelRatio` |
+| `chapter-{nairobi,studio,datacenter,core,commerce}.mp4` | 1920×1080, 0.5–1.7 MB | full-HD chapter reels |
+| `signal-loop.mp4` | 1920×1080, 0.6 MB | accounts-band signal field |
+| `*-poster.jpg` | — | posters; also the static treatment for `prefers-reduced-motion`, `save-data` or blocked autoplay |
 
-The hero was generated as a 720p, 5-second seamless clip and upscaled; the chapter reels were
-rendered from 2816×1584 photographic frames through the ffmpeg pipeline in
-`/home/ubuntu/media/reels.py` (slow push-in, light pass, vignette breathing, film grain, identical
-first/last frame for seamless loops, `+faststart`). All files stay well under the 30 MiB limit.
+The hero was generated as a 720p, 5-second seamless clip, then upscaled, de-noised and grained
+with ffmpeg to the 4K master. The chapter reels were rendered from 2816×1584 photographic frames
+and the signal field from procedurally drawn frames by the pipeline in `/home/ubuntu/media/reels.py`
+(slow push-in, drifting light pass, vignette breathing, film grain). The largest file is 5.8 MB,
+far inside the 30 MiB per-asset limit.
 
 ## Brand assets
 
-`client/public/brand/` carries the mark traced as vector SVG from the supplied logo
-(`enosx-logo-concept-c.png`), favicons at 48/96/180/512 plus `.ico`, and `og-cover.jpg`.
+`client/public/brand/` carries a size set of the supplied logo (`enosx-logo-concept-c.png`) cut
+to PNG at 48/96/180/192/256/384/512/1024, an inverted 768 mark for the ink overprint band,
+`apple-touch-icon.png` and `og-cover.jpg`. The unmodified supply is kept at
+`client/public/enosx-logo.png`, and `favicon.ico` + `favicon.png` are declared in the document
+head along with `theme-color: #012363`. The hexagon mark appears at full bleed through CSS
+(`.overprint__mark`) rather than as a separate SVG file, so it stays crisp at any scale.
 `client/public/avatars/` holds the real team portraits taken from the company repository.
 
 ## Contact and routing rules

@@ -16,12 +16,14 @@ into frame set `data-state="live"` and started `chapter-core.mp4` while pausing 
 - Hero reel = AI-generated ENOSX brand clip (Seedance 2.0 Mini, 720p, exactly 5 s, single clip
   per this session's plan limit) built from a composited 16:9 logo plate used as first AND last
   keyframe so the loop is seamless; upscaled with ffmpeg to 3840x2160, de-noised, film grain,
-  `+faststart`, poster frame.
+  `+faststart`, poster frame. Served through `<source media="(min-width: 1600px)">` with a
+  1920×1080 companion for smaller screens.
 - Chapter reels (Nairobi, studio, data centre, ENOSX Core product, commerce) rendered from the
   five generated stills through ffmpeg: slow push-in, light pass, vignette breathing, grain,
-  identical first/last frame for seamless looping, 2560x1440 (hero 4K), under 30 MiB each.
+  identical first/last frame for seamless looping, 1920×1080 full HD (only the hero carries a
+  3840×2160 stream), every file far under 30 MiB.
 - Procedural "signal field" reel for the accounts band: nodes + proximity links + light sweep in
-  Ink Navy/Azure/Teal on newsprint, rendered frame-by-frame in Python, encoded 1440p.
+  Ink Navy/Azure/Teal on newsprint, rendered frame-by-frame in Python, encoded 1920×1080.
 - Videos are `muted playsinline autoplay loop` with `preload` only for the hero; sections use
   IntersectionObserver to play/pause. `prefers-reduced-motion` / save-data / no-autoplay falls
   back to the poster frame with a static treatment.
@@ -30,7 +32,9 @@ into frame set `data-state="live"` and started `chapter-core.mp4` while pausing 
 
 No `backdrop-filter` anywhere and no dark page ground in `client/src/index.css`; 4K master probed
 at 3840×2160 and served through a `media="(min-width: 1600px)"` source query; desktop 1440×900 and
-mobile 390×844 screenshot passes; supplied logo vectorised for favicon/wordmark.
+mobile 390×844 screenshot passes; the supplied logo is cut into a PNG size set (48–1024) plus
+`.ico`/`apple-touch-icon` and appears full-bleed through the CSS `.overprint__mark` treatment
+rather than a separate `.svg` file.
 
 - Light editorial design: newsprint/paper grounds, Ink Navy `#012363` type, Azure `#00A2FD`,
   Teal `#00A9AB`. No page-wide dark theme.
@@ -39,9 +43,10 @@ mobile 390×844 screenshot passes; supplied logo vectorised for favicon/wordmark
 - Must not look AI-generated: hard-edged frames and hairline rules instead of uniform rounded
   cards, asymmetric editorial grid instead of a centred stack of three cards, film-slate
   metadata, spot-print overprint logo treatment, real photography for people.
-- 4K/full-HD sharpness: vector SVG logo traced from the supplied PNG, favicon set at 48/96/180/512
-  plus `.ico`, fluid `clamp()` type including a 2160px tier, devicePixelRatio-aware canvas,
-  dpr-independent hairlines, 4K hero video.
+- 4K/full-HD sharpness: logo cut from the supplied PNG at 48/96/180/192/256/384/512/1024 plus
+  `.ico` and `apple-touch-icon`, fluid `clamp()` type including a 2160px tier,
+  `.ico` and `apple-touch-icon`, fluid `clamp()` type with a dedicated `min-width: 2200px` tier,
+  devicePixelRatio-aware reel source selection, dpr-independent hairlines, 4K hero video.
 - Supplied logo (`/home/ubuntu/upload/enosx-logo-concept-c.png`) is the only brand mark; it is
   used as favicon and wordmark lockup.
 

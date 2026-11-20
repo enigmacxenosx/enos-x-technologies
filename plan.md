@@ -6,10 +6,22 @@ cinematic storytelling driven by **real encoded video files** as section backgro
 
 Delivered and verified: see [`TODO.md`](TODO.md) for the outcome list and
 [`VERIFICATION.md`](VERIFICATION.md) for the evidence (video decode checks, API behaviour,
-responsive passes). Two deviations from the sketch below, both recorded here so the plan matches
-the code: media ships as MP4 only (`client/public/media/*.mp4` + JPEG posters — no WebM
-variants), and the accounts "signal field" reel is an offline ffmpeg render instead of a live
-`<canvas>`.
+responsive passes). The deltas from the sketch below are recorded here so the plan matches the
+shipped code:
+
+1. **Media format.** H.264 MP4 only (`client/public/media/*.mp4` + JPEG posters) — no WebM
+   variants, since every target browser decodes the baseline profile here.
+2. **Resolutions.** The 3840×2160 stream is reserved for the hero (`hero-2160.mp4`, served by a
+   `min-width: 1600px` source query with `hero-1080.mp4` as the companion). The five chapter
+   reels and the accounts signal field ship at 1920×1080, all 24 fps seamless loops.
+3. **Signal field.** Rendered offline with ffmpeg rather than drawn on a live `<canvas>`, so the
+   result is a real video layer that pauses with the scroll like every other reel.
+4. **Logo form.** The mark is delivered as a cut PNG size set (48–1024, plus `.ico`,
+   `favicon.png` and `apple-touch-icon`) and used full-bleed through the CSS `.overprint__mark`
+   treatment, not as a standalone `enosx-mark.svg` file.
+
+§2 and §4 below have been updated to the shipped paths and router names; §3 stays as the approved
+design intent (the deviations above are the only differences).
 
 ## 1. Source of truth (from the user's repos)
 
@@ -39,10 +51,12 @@ frontend, Express + tRPC + Drizzle(MySQL) backend, managed database, Dockerfile 
 - **Frontend:** `client/src/pages/{Home,Products,Core,Team,Accounts,About,Contact}.tsx`,
   shared cinematic primitives in `client/src/components/cinema/`, content data in
   `client/src/data/`.
-- **Backend:** new tables `enquiries`, `newsletterSignups`, `accountEvents` in
-  `drizzle/schema.ts`; queries in `server/db.ts`; tRPC routers `enquiry`, `newsletter`,
-  `signals`, `admin` in `server/routers.ts`; a rate-limited honeypot-protected write path.
-  Read-only public stats via `signals.summary`.
+- **Backend (as shipped):** tables `enquiries`, `newsletter_signups`, `account_events` in
+  `drizzle/schema.ts`; queries in `server/db.ts`; one `site` router (`site.topics`,
+  `site.enquiry`, `site.newsletter`, `site.accountEvent`, `site.signals`) plus an `admin` router
+  behind `adminProcedure` in `server/routers.ts`; zod contracts shared through
+  `shared/enquiry.ts`; rate-limited, honeypot-protected write path.
+  Read-only public stats via `site.signals`.
 - **Admin:** `/admin` lists enquiries + subscribers, gated by the starter's Manus OAuth
   session and `role === "admin"` (the owner is already promoted in `server/db.ts upsertUser`).
   Cookie options come from `server/_core/cookies.ts` so Preview iframe sessions work.
@@ -129,21 +143,31 @@ frontend, Express + tRPC + Drizzle(MySQL) backend, managed database, Dockerfile 
 
 ```
 client/src
-  App.tsx                     route table + chapter rail + skip link
-  index.css                   tokens (newsprint/ink/azure/teal), slate + reveal primitives
-  main.tsx                    tRPC client bootstrap
-  pages/                      Home, Products, Core, Team, Accounts, About, Contact, Admin, NotFound
-  components/cinema/          Reel (video layer), Slate, LineReveal, ChapterRail, Scramble,
-                              SignalCanvas (dpr-aware), Grain, Playhead
-  components/site/            Header, Footer, AccountRow, StatBlock, EnquiryForm, NewsletterForm
-  data/                       site.ts (products, team, accounts, chapters, values)
+  App.tsx                     route table, chapter rail, playhead, skip link
+  index.css                   tokens (newsprint/ink/azure/teal) + all custom classes in
+                              @layer components so Tailwind utilities still win
+  data/site.ts                brand copy, 6 products, 5-person team, 12 accounts, chapters,
+                              modes, timeline, stats
+  components/cinema/Reel.tsx  video layer: 4K/1080 <source> pair, IntersectionObserver
+                              play/pause, poster + reduced-motion/save-data still path
+  components/cinema/Reveal.tsx line-mask headline reveals
+  components/                 Slate, Scramble, Playhead, ChapterRail, AccountRow, Meta,
+                              Editorial (band/row/chip primitives)
+  components/layout/          Header.tsx, Footer.tsx
+  pages/                      Home, About, Products, Core, Team, Accounts, Contact, Admin,
+                              NotFound
 client/public
-  media/*.mp4|*.webm|*.jpg    encoded video reels, posters
-  brand/enosx-mark.svg …      vector logo, favicon set
+  media/*.mp4|*.jpg           7 reels (8 MP4: hero 2160 + 1080) + 7 posters
+  brand/                      logo cut at 48–1024, invert 768, apple-touch-icon, og-cover
+  avatars/                    five real team portraits from the company repo
+  favicon.ico, favicon.png, enosx-logo.png, manus-routes.json, robots.txt, sitemap.xml
 server/
-  routers.ts                  enquiry | newsletter | signals | admin | auth | system
+  routers.ts                  site.topics | site.enquiry | site.newsletter |
+                              site.accountEvent | site.signals | admin.*
   db.ts                       insert/count/list queries
-drizzle/schema.ts             enquiries, newsletter_signups, account_events
+  _core/index.ts              Express entry: API + built SPA on PORT
+shared/enquiry.ts             zod contracts, topic list, reference-code helper
+drizzle/                      schema.ts + 0001_needy_rocket_racer.sql
 ```
 
 ## 5. Acceptance mapping

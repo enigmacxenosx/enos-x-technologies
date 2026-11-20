@@ -496,3 +496,256 @@ textarea::placeholder {
     transform: none;
   }
 }
+
+
+/*
+ ENOSX — 3D CINEMATIC EXPERIENCE Presentation-only
+ enhancement */
+
+:root {
+  --cinema-depth: 1000px;
+  --cinema-ease: cubic-bezier(0.2, 0.75, 0.25, 1);
+}
+
+/* Cinematic depth */
+.cinematic-hero,
+.cinematic-page-hero {
+  perspective: var(--cinema-depth);
+  transform-style: preserve-3d;
+}
+
+/* Hero image depth */
+.cinematic-hero > img {
+  transform: translateZ(-45px) scale(1.12);
+  filter: saturate(1.08) contrast(1.08);
+  transition: filter 1.2s ease;
+}
+
+/* Atmospheric lighting */
+.cinematic-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      ellipse at 72% 38%,
+      oklch(0.72 0.19 258 / 16%),
+      transparent 38%
+    ),
+    linear-gradient(
+      110deg,
+      oklch(0.08 0.04 270 / 65%),
+      transparent 65%
+    );
+}
+
+/* Floating depth on cards */
+.cinematic-card {
+  transform-style: preserve-3d;
+  transition:
+    transform 650ms var(--cinema-ease),
+    box-shadow 650ms var(--cinema-ease),
+    border-color 350ms ease;
+  box-shadow:
+    0 12px 35px oklch(0 0 0 / 12%),
+    inset 0 1px 0 oklch(1 0 0 / 5%);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .cinematic-card:hover {
+    transform: perspective(1000px) rotateX(2deg)
+      rotateY(-2deg) translateY(-8px);
+    box-shadow:
+      0 30px 70px oklch(0 0 0 / 28%),
+      0 0 35px oklch(0.72 0.19 258 / 9%);
+  }
+}
+
+/* Layered chapter images */
+section > img {
+  transition: transform 1.4s var(--cinema-ease);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  section:hover > img {
+    transform: scale(1.035);
+  }
+}
+
+/* Cinematic section transitions */
+.reveal {
+  transition:
+    opacity 1s var(--cinema-ease),
+    transform 1s var(--cinema-ease);
+}
+
+.reveal.in {
+  transform: translate3d(0, 0, 0);
+}
+
+/* Fine atmospheric texture */
+.cinematic-hero,
+.cinematic-page-hero {
+  background-color: #08091b;
+  background-image:
+    radial-gradient(
+      circle at 50% 50%,
+      oklch(0.3 0.12 270 / 10%),
+      transparent 65%
+    );
+}
+
+/* Mobile performance */
+@media (max-width: 767px) {
+  .cinematic-card,
+  .cinematic-hero,
+  .cinematic-page-hero {
+    transform-style: flat;
+  }
+
+  .cinematic-card:hover {
+    transform: none;
+  }
+
+  .cinematic-hero > img {
+    transform: scale(1.04);
+  }
+
+  section:hover > img {
+    transform: none;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .cinematic-card,
+  .cinematic-hero > img,
+  section > img,
+  .reveal {
+    transition: none !important;
+    transform: none !important;
+  }
+}
+
+
+
+/* ENOS X — CINEMATIC DEPTH LAYERS */
+
+.cinematic-card {
+  position: relative;
+  transform-style: preserve-3d;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.cinematic-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0;
+  background:
+    radial-gradient(
+      circle at 50% 0%,
+      rgba(129, 140, 248, 0.18),
+      transparent 65%
+    );
+  transition: opacity 700ms ease;
+}
+
+.cinematic-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.cinematic-card h1,
+.cinematic-card h2,
+.cinematic-card h3 {
+  transform: translateZ(18px);
+}
+
+.cinematic-card p {
+  transform: translateZ(10px);
+}
+
+.cinematic-card a,
+.cinematic-card button {
+  transform: translateZ(22px);
+  transition:
+    transform 350ms ease,
+    filter 350ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .cinematic-card:hover::before {
+    opacity: 1;
+  }
+
+  .cinematic-card:hover a,
+  .cinematic-card:hover button {
+    filter: brightness(1.12);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cinematic-card,
+  .cinematic-card *,
+  .cinematic-card::before {
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+
+
+/* ENOS X — CINEMATIC HERO ENHANCEMENT */
+
+.cinematic-hero,
+.cinematic-page-hero {
+  isolation: isolate;
+  transform-style: preserve-3d;
+}
+
+.cinematic-hero h1,
+.cinematic-page-hero h1 {
+  position: relative;
+  z-index: 2;
+  text-wrap: balance;
+  letter-spacing: -0.055em;
+  text-shadow:
+    0 4px 24px rgba(0, 0, 0, 0.28),
+    0 18px 65px rgba(0, 0, 0, 0.25);
+}
+
+.cinematic-hero p,
+.cinematic-page-hero p {
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.25);
+}
+
+.cinematic-hero .hero-glow {
+  filter: blur(18px);
+  opacity: 0.8;
+}
+
+.cinematic-hero img,
+.cinematic-page-hero img {
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+@media (min-width: 768px) {
+  .cinematic-hero h1,
+  .cinematic-page-hero h1 {
+    max-width: 14ch;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cinematic-hero img,
+  .cinematic-page-hero img {
+    will-change: auto;
+  }
+}

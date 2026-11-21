@@ -26,9 +26,18 @@ export const brand = {
   story:
     "Founded in Nairobi in 2024 around a simple conviction: latency is a design flaw. So we build products that answer before you finish thinking — an AI workspace, private inference, desktop utilities and a Kenyan commerce layer.",
   values: [
-    { title: "Build boldly", body: "We take the ambitious route and ship it, rather than talk about it." },
-    { title: "Ship honestly", body: "We tell clients what is real, what is demo and what is next." },
-    { title: "Stay curious", body: "Every release teaches us something the plan did not." },
+    {
+      title: "Build boldly",
+      body: "We take the ambitious route and ship it, rather than talk about it.",
+    },
+    {
+      title: "Ship honestly",
+      body: "We tell clients what is real, what is demo and what is next.",
+    },
+    {
+      title: "Stay curious",
+      body: "Every release teaches us something the plan did not.",
+    },
   ],
   founderLine: "Build with intention. Ship with courage. Keep learning.",
   ownerNote: "First. Jesus is Lord.",
@@ -53,7 +62,8 @@ export const products: Product[] = [
     index: "01",
     name: "ENOSX AI",
     kicker: "Intelligent workspace",
-    summary: "A multimodal AI assistant that behaves like part of the operating system.",
+    summary:
+      "A multimodal AI assistant that behaves like part of the operating system.",
     detail:
       "ENOSX AI is a responsive web application with a companion desktop shell, configurable AI services, optional account sync and integrations. It is not a chatbot in a tab: it reads your files, watches your context, speaks and listens, and keeps working when you leave the window.",
     capabilities: [
@@ -94,7 +104,8 @@ export const products: Product[] = [
     index: "03",
     name: "Exboot",
     kicker: "Windows utility",
-    summary: "Turn a genuine ISO into dependable boot media, without the guesswork.",
+    summary:
+      "Turn a genuine ISO into dependable boot media, without the guesswork.",
     detail:
       "A Windows desktop utility for creating bootable and multi-boot USB media. It keeps the important decisions visible — which image, which disk, which partition scheme — and it never hides what will be erased.",
     capabilities: [
@@ -117,7 +128,8 @@ export const products: Product[] = [
     index: "04",
     name: "Enosx Browser",
     kicker: "Private browser shell",
-    summary: "A calm, offline-first browser with the assistant built into the margin.",
+    summary:
+      "A calm, offline-first browser with the assistant built into the margin.",
     detail:
       "A Chrome-style shell with tabs, workspaces, reading list, private mode and an Enosx AI panel that only sees what you approve. The application registers a service worker and the installed desktop app loads without a connection.",
     capabilities: [
@@ -128,7 +140,10 @@ export const products: Product[] = [
       "Electron desktop builds for Linux, Windows and macOS, plus a PWA",
     ],
     status: "Preview",
-    link: { label: "Source", href: "https://github.com/enigmacxenosx/Enosh-browser" },
+    link: {
+      label: "Source",
+      href: "https://github.com/enigmacxenosx/Enosh-browser",
+    },
     reel: "studio",
   },
   {
@@ -136,7 +151,8 @@ export const products: Product[] = [
     index: "05",
     name: "Enosx Tech Store",
     kicker: "Kenyan commerce",
-    summary: "Electronics discovery and buying built around how Kenya actually pays.",
+    summary:
+      "Electronics discovery and buying built around how Kenya actually pays.",
     detail:
       "A Kenya-focused storefront for electronics, computing and accessories with an M-Pesa-ready checkout and Nairobi delivery options — the commerce half of the same engineering team.",
     capabilities: [
@@ -163,7 +179,10 @@ export const products: Product[] = [
       "Case studies and component showcase",
     ],
     status: "Live",
-    link: { label: "Read it", href: "https://github.com/enigmacxenosx/enosh-blog" },
+    link: {
+      label: "Read it",
+      href: "https://github.com/enigmacxenosx/enosh-blog",
+    },
     reel: "crew",
   },
 ];
@@ -193,7 +212,8 @@ export const team = [
     initials: "TI",
     name: "Tracey Ivyone",
     role: "Growth, Marketing & Community Lead",
-    responsibility: "Content, social media, community, referrals and user acquisition",
+    responsibility:
+      "Content, social media, community, referrals and user acquisition",
     avatar: "/avatars/tracey-ivyone.jpg",
     handle: null,
     note: "Growth and community",
@@ -347,10 +367,12 @@ export const accounts: Account[] = [
 export const chapters = [
   { id: "origin", label: "Origin" },
   { id: "portfolio", label: "Portfolio" },
+  { id: "ecosystem", label: "Explore" },
   { id: "core", label: "Private AI" },
   { id: "people", label: "People" },
   { id: "impact", label: "Impact" },
   { id: "accounts", label: "Accounts" },
+  { id: "trust", label: "Trust" },
 ] as const;
 
 export const stats = [
@@ -379,8 +401,20 @@ export const modes = [
 ] as const;
 
 export const timeline = [
-  { year: "2024", text: "Enosx Technologies founded in Nairobi. First products built around one rule: speed is the user experience." },
-  { year: "2025", text: "ENOSX AI grows from a chat interface into an intelligent workspace: attachments, media, voice, connectors and memory." },
-  { year: "2026", text: "Exboot ships public Windows releases, Enosx Browser reaches offline preview, and the Kenya commerce hub goes live." },
-  { year: "Next", text: "ENOSX Core private inference as a default posture, deeper desktop integration, and published interfaces for every product." },
+  {
+    year: "2024",
+    text: "Enosx Technologies founded in Nairobi. First products built around one rule: speed is the user experience.",
+  },
+  {
+    year: "2025",
+    text: "ENOSX AI grows from a chat interface into an intelligent workspace: attachments, media, voice, connectors and memory.",
+  },
+  {
+    year: "2026",
+    text: "Exboot ships public Windows releases, Enosx Browser reaches offline preview, and the Kenya commerce hub goes live.",
+  },
+  {
+    year: "Next",
+    text: "ENOSX Core private inference as a default posture, deeper desktop integration, and published interfaces for every product.",
+  },
 ] as const;
